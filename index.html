@@ -34,8 +34,6 @@
 
 	button {
 		font-weight: bold;
-		margin-top: 6px;
-		margin-bottom: 6px;
 		background-color: #fee0e8;
 		border: 2px solid black;
 		font-family: forzanLight;
@@ -359,6 +357,7 @@
 	}
 
 	.centerHoriz {
+		position: absolute;
 		left: 50%;
 	  transform: translateX(-50%);
 	}
@@ -434,6 +433,34 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+	}
+
+	.thirdsColumn {
+		 height: 100%; 
+		 width: 33.33%; 
+		 display: inline-block; 
+		 text-align: center;
+		 padding: 24px;
+	}
+
+	.marqueeItem {
+		height: 200px;
+		width: 200px;
+		margin-bottom: 20px;
+		display: flex;
+  	justify-content: center;
+	}
+
+	#marqueeContent {
+		width: 200px;
+		height: 100%;
+		position: absolute;
+  	animation: infScroll 25s linear infinite;
+	}
+
+	@keyframes infScroll {
+  0% { transform: translateY(0);}
+  100% { transform: translateY(-2640px);}
 	}
 
 	#scrollDown {
@@ -749,6 +776,31 @@
 		background-color: #afedef;
 	}
 
+	#leftSkillsSP {
+		position: absolute;
+		border-right: .5px solid black;
+		left: 0px;
+		height: 100%;
+		width: 28%;
+		background-color: white;
+	}
+
+	#rightSkillsSP {
+		position: absolute;
+		float: left;
+		border-left: .5px solid black;
+		right: 0px;
+		height: 100%;
+		width: 72%;
+		background-color: #9a8dc7;
+		font-size: 0px;
+	}
+
+	#marquee {
+		height: 100%;
+		width: 200px;
+	}
+
 </style>
 	</head>
 
@@ -765,7 +817,7 @@
 		</div>
 	  </li>
 	  <li class="dropdown">
-	  	<a class="dropbtn">Resume<label class="downArrow barArrows">&#8964;</label></a>
+	  	<a class="dropbtn">Skills<label class="downArrow barArrows">&#8964;</label></a>
 	  	<div class="dropdown-content">
 			<a>View Resume</a>
 		</div>
@@ -938,8 +990,44 @@
 		</div>
 	</div>
 
-	<div class="panel pagePanel" id="resume">
-		<h1>Resume</h1>
+	<div class="panel pagePanel" id="skills">
+
+		<div class="subpanel" id="leftSkillsSP">
+			<div id="marquee" class="centerHoriz">
+				<div id="marqueeContent">
+				</div>
+			</div>
+		</div>
+
+		<div class="subpanel" id="rightSkillsSP">
+
+			<div class="subpanel" style="height: 15%; border-bottom: 1px solid black">
+				<div class="centerVert" style="padding-left: 30px">
+					<h1 style="display: inline-block;">Skills</h1>
+					<hr class="subpanelHR" style="position: absolute; bottom: 10px; width: 700px">
+				</div>
+				<button class="centerVert" style="display: inline-block; position: absolute; right: 20px" onclick="location.href='assets/documents/Resume.pdf'">view resume</button>
+			</div>
+
+			<div class="subpanel" style="height: 85%;">
+				<div id="talentsColumn" class="subpanel thirdsColumn" style="background-color: #ffe5c4; border-right: .5px solid black">
+					<h2>Talents</h2>
+					<hr class="subpanelHR" style="width: 200px; float: none;">
+				</div>
+
+				<div id="programmingColumn"class="subpanel thirdsColumn" style="background-color: #afedef; border-right: .5px solid black; border-left: .5px solid black">
+					<h2>Programming</h2>
+					<hr class="subpanelHR" style="width: 200px; float: none;">
+				</div>
+
+				<div id="designColumn" class="subpanel thirdsColumn" style="background-color: #ecfe9f; border-left: .5px solid black">
+					<h2>Design</h2>
+					<hr class="subpanelHR" style="width: 200px; float: none;">
+				</div>
+			</div>
+
+		</div>
+
 	</div>
 
 	<div class="panel pagePanel" id="contact">
@@ -965,7 +1053,7 @@
 	const titleDVNG = "Dog Visual Novel Game";
 	const titleOMW = "Other Minor Works";
 
-	const descEFTC = "Inspired by an app used for treatment in an OCD treatment center, EF Training Classic is an Exposure and Response Therapy based tool that can be used to improve OCD symptoms. EF Training Classic is a part of a bigger project in progress, OCxD. OCxD is a web app equipped with various Exposure and Response Therapy based tools and resources used aid someone in treating their OCD.";
+	const descEFTC = "Inspired by an app used for treatment in an OCD treatment center, EF Training Classic is an Exposure and Response Therapy based tool that can be used to improve OCD symptoms. EF Training Classic is a part of a bigger project in progress, OCxD. OCxD is a web app equipped with various Exposure and Response Therapy based tools and resources used to aid someone in treating their OCD.";
 	const descACWB = "This is about the Animal Crossing Weather Bot.";
 	const descDG = "This is about the Dog Gacha.";
 	const descDVNG = "This is about the Dog Visual Novel Game.";
@@ -1060,7 +1148,7 @@
 	//piano music
 
 		const onBTS = {idName: "audioOnBTS", name: "On - BTS (방탄소년단)", source:"assets/images/youtubeThumbnails/OnBTS.jpeg", audio:"assets/audio/on.mp3", demo:"assets/audio/onDemo.mp3", date:"March 10, 2020", difficulty: "advanced", scoreType: "arrangement"}
-		const memoriesOfTheCity = {idName: "audioMemoriesOfTheCity", name: "Memories Of The City - Persona 3", source:"assets/images/youtubeThumbnails/MemoriesOfTheCity.jpeg", audio: "assets/audio/memoriesOfTheCity.mp3", demo:"assets/audio/memoriesOfTheCityDemo.mp3", date:"September 27, 2019", difficulty: "advanced", scoreType: "transcription"}
+		const memoriesOfTheCity = {idName: "audioMemoriesOfTheCity", name: "Memories Of The City - Persona 3", source:"assets/images/youtubeThumbnails/MemoriesOfTheCity.jpeg", audio: "assets/audio/memoriesOfTheCity.mp3", demo:"assets/audio/memoriesOfTheCityDemo.mp3", date:"September 27, 2019", difficulty: "advanced", scoreType: "arrangement"}
 		const deadmansGun = {idName: "audioDeadmansGun", name: "Deadman's Gun - Red Dead Redemption", source:"assets/images/youtubeThumbnails/deadmansGun.jpeg", audio: "assets/audio/deadmansGun.mp3", demo: "assets/audio/deadmansGunDemo.mp3", date: "July 31, 2019", difficulty: "intermediate", scoreType: "transcription"}
 		const newBorn = {idName: "audioNewBorn", name: "New Born (Hybrid) - The World Ends With You",  source: "assets/images/youtubeThumbnails/newBornHybrid.png", audio: "assets/audio/newBornHybrid.mp3", demo: "assets/audio/newBornHybridDemo.mp3", date: "July 29, 2021", difficulty: "advanced", scoreType: "transcription"}
 
@@ -1146,6 +1234,67 @@
       	document.getElementById(demoIdName).currentTime = 0;
       }, 500);
 		};
+
+	// skills
+
+	const talents = ["Self Learning", "Prototype Design", "Creative Writing", "Club Leadership", "Blogging", "Hosting  and Coordinating Events", "Music Creation", "Public Speaking & Presentation"];
+	const programming = ["Javascript", "HTML", "CSS", "C++", "Java", "Python", "Jquery", "Ren’Py", "Github"];
+	const design = ["Adobe Photoshop", "Adobe Illustrator", "Digital Drawing", "Graphic Design"];
+
+	var talentsDiv = document.getElementById("talentsColumn");
+	var programmingDiv = document.getElementById("programmingColumn");
+	var designDiv = document.getElementById("designColumn");
+
+	function createList(div, list) {
+
+		for (let i = 0; i < list.length; i++) {
+			var listItem = document.createElement('p');
+			listItem.innerHTML = list[i];
+			div.style.fontSize = "22px";
+			div.appendChild(listItem);
+		};
+	};
+
+	createList(talentsDiv, talents);
+	createList(programmingDiv, programming);
+	createList(designDiv, design);
+
+	//skills
+
+	const logos = ["assets/images/skillsIcons/Adobe_Photoshop_CC_icon.svg.png", "assets/images/skillsIcons/HTML5_logo_and_wordmark.svg.png", "assets/images/skillsIcons/CSS3_logo_and_wordmark.svg.png", "assets/images/skillsIcons/pngwing.com (1).png", "assets/images/skillsIcons/ISO_C++_Logo.svg.png", "assets/images/skillsIcons/Python-logo-notext.svg.png", "assets/images/skillsIcons/Flat-logo-Tumblr-PNG.png", "assets/images/skillsIcons/pngwing.com.png", "assets/images/skillsIcons/musescore_sticker+11@3x.png", "assets/images/skillsIcons/Adobe_Illustrator_CC_icon.svg.png", "assets/images/skillsIcons/pngwing.com (2).png", "assets/images/skillsIcons/Java_programming_language_logo.svg.png"]
+
+	function createMarquee(logos) {
+
+		for (let i = 0; i < logos.length; i++) {
+			var div = document.getElementById("marqueeContent");
+			var logoBox = document.createElement('div');
+			logoBox.className = "marqueeItem";
+			div.appendChild(logoBox);
+
+			var logo = document.createElement('img');
+			logo.src = logos[i];
+			logo.style.maxWidth = "100%"
+			logo.style.maxHeight = "100%"
+			logo.style.objectFit = "contain"
+			logoBox.appendChild(logo);
+		};
+
+		for (let i = 0; i < 4; i++) {
+			var div = document.getElementById("marqueeContent");
+			var logoBox = document.createElement('div');
+			logoBox.className = "marqueeItem";
+			div.appendChild(logoBox);
+
+			var logo = document.createElement('img');
+			logo.src = logos[i];
+			logo.style.maxWidth = "100%"
+			logo.style.maxHeight = "100%"
+			logoBox.appendChild(logo);
+		};
+
+	};
+
+	createMarquee(logos);
 
 
 
