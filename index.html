@@ -90,10 +90,12 @@
 	}
 
 	li a, .dropbtn {
-		  display: inline-block;
+		  display: flex;
+		  align-items: center;
 			color: black;
 		  text-align: center;
-		  padding: 14px 16px;
+		  padding: 0px 16px;
+		  height: 7vh;
 		  text-decoration: none;
 		  transition: background-color .25s ease-in-out;
 		-moz-transition: background-color .25s ease-in-out;
@@ -227,7 +229,7 @@
 
 	.downArrow {
 		position:relative;
-		bottom: 6px;
+		bottom: .5vh;
 		-webkit-transform: scale(1.5, 1);
 	  -moz-transform: scale(1.5, 1);
 	  -o-transform: scale(1.5, 1);
@@ -237,6 +239,7 @@
 	.barArrows {
 		margin-left: 10px;
 		display: inline-block;
+
 	}
 
 	.panel {
@@ -1458,7 +1461,7 @@ function displayWork() {
 	if (currentSlide.name == "The Normalization of Cultural Abuse") {
 		var space = document.createElement('br');
 		document.getElementById("workDescDesc").appendChild(space);
-		
+
 		var btn = document.createElement('button');
 		btn.innerHTML = "Link to website <i class='fa fa-external-link'></i>"
 		btn.onclick = function() {window.open('https://annikachavez44.wixsite.com/culturalabuse/');}
