@@ -1454,6 +1454,16 @@ function displayWork() {
 	createWorkSlideAssets(currentMedia);
 	var dots = document.getElementsByClassName("dot");
 	dots[currentIndex].classList.add("highlightedDot");
+
+	if (currentSlide.name == "The Normalization of Cultural Abuse") {
+		var space = document.createElement('br');
+		document.getElementById("workDescDesc").appendChild(space);
+		
+		var btn = document.createElement('button');
+		btn.innerHTML = "Link to website <i class='fa fa-external-link'></i>"
+		btn.onclick = function() {window.open('https://annikachavez44.wixsite.com/culturalabuse/');}
+		document.getElementById("workDescDesc").appendChild(btn);
+	}
 }
 
 function changeWork(buttonObj, slideNum) {
