@@ -13,6 +13,11 @@
 
 	body {
   		background-color: white;
+  		margin-top: -1px;
+  		margin-left: 0px;
+  		margin-right: 0px;
+  		margin-bottom: 0px;
+  		
 	}
 
 	h1 {
@@ -39,14 +44,8 @@
 	}
 
 	span {
-		font-family: cocomat;
-		font-size: 60px;
-		color: #FF8BAC;
-		position: relative;
-		top: 28px;
-		display: inline-block;
-		line-height: 20px;
-		position: relative;
+		font-size: 50px;
+		font-family: forzanLight;
 	}
 
 	button {
@@ -83,7 +82,6 @@
 	  	border-top: 1px solid black;
 	  	border-left: 1px solid black;
 	  	border-right: 1px solid black;
-
 	}
 
 	li {
@@ -147,8 +145,8 @@
 	}
 
 	b {
-  font-family: cocomatBold;
-}
+  	font-family: cocomatBold;
+	}
 
 	@font-face {
 			font-family: forzanLight;
@@ -170,9 +168,10 @@
 	}
 
 	.topBar {
-		width: 98.9%;
+		width: 100vw;
 		margin: 0px;
 		padding: 0px;
+		height: 7vh;
 		border-bottom: 1px solid black;
 		background-color: #fee0e8; 
 		z-index: 30;
@@ -219,6 +218,13 @@
   	transform: translateY(-50%);
   }
 
+  .centerAll {
+  	position: absolute;
+    top: 50%;
+    left: 50%;
+  	transform: translate(-50%, -50%);
+  }
+
 	.downArrow {
 		position:relative;
 		bottom: 6px;
@@ -235,20 +241,14 @@
 
 	.panel {
 		border:1px solid black;
-		height: 100%;
-		width: 100%;
-		margin-bottom: 100px;
+		height: 93vh;
+		margin-top: 7vh;
+		width: 100vw;
+		margin-bottom: 14vh;
 		box-shadow: 5px 5px 5px #c4cacf;
-		margin-top: -8px;
 		overflow: hidden;
 		position: relative;
 	}
-
-	.pagePanel {
-		float: left;
-		height: 700px;
-	}
-
 
 	.subpanel {
 		position: relative;
@@ -265,34 +265,10 @@
 		text-align: right;
 	}
 
-	.prev {
-		font-size: 14px;
-		cursor: pointer;
-	}
-
-	.next {
-		font-size: 14px;
-		cursor: pointer;
-	}
-
 	.arrow {
 		position: relative;
 		font-size: 40px;
 		cursor: pointer;
-	}
-
-	.arrowArea {
-		position: absolute;
-		cursor: pointer;
-		transition: all .2s ease-in-out;
-		width: 60px;
-		height: 45px;
-		bottom: 0px;
-		right: 0px;
-	}
-
-	.arrowArea:hover {
-		transform: scale(1.1); 
 	}
 
 	.circleButton {
@@ -305,55 +281,55 @@
 		padding: 6px;
 	}
 
-
-	.slideUp {
-    animation: slideUpFade .3s ease-in;
-	}
-
 	.subpanelText {
-		position: absolute;	
-		top: 50%;
-  	transform: translateY(-50%);
-  	padding: 60px;
-  	z-index: 10;
+		position: relative;
 	}
 
-	@keyframes slideUpFade {
+
+	.slideUpFadeOut {
+    animation: slideUpFadeOut .4s ease-in;
+	}
+
+	@keyframes slideUpFadeOut {
+
+		0% {
+			opacity: 1;
+		}
 
 		50% {
 			opacity: 0;
 		}
 
 		100% {
-			top: -50px;
 			opacity: 0;
+			transform: translateY(-200%);
 		}
 	}
 
-	.slideUpFromDown {
-    animation: slideUpDownFade .3s ease-out;
+	.slideUpFadeIn {
+    animation: slideUpFadeIn .4s ease-in;
+	}
+
+	@keyframes slideUpFadeIn {
+
+		0% {
+			transform: translateY(200%);
+		}
+
+		50% {
+			opacity: 0;
+		}
+
+		100% {
+			transform: translateY(0);
+			opacity: 1;
+		}
 	}
 
 	.subpanelHR {
 		position: relative;
 		border: .5px solid black;
-	}
-
-	@keyframes slideUpDownFade {
-
-		0% {
-			opacity: 0;
-			transform: translateY(100%);
-		}
-
-		50% {
-			opacity: 0;
-		}
-
-		100% {
-			opacity: 1;
-			transform: translateY(-50%);
-		}
+		margin-top: -2px;
 	}
 
 	.leftTopBar {
@@ -362,17 +338,26 @@
 
 	.dot {
 	  cursor: pointer;
-	  height: 15px;
-	  width: 15px;
+	  height: 18px;
+	  width: 18px;
 	  margin: 10px 2px;
-	  background-color: #bbb;
+	  background-color: black;
 	  border-radius: 50%;
 	  display: inline-block;
 	  transition: background-color 0.6s ease;
 	}
 
+	.highlightedDot {
+		border: 2px solid black;
+		background-color: #FF8BAC;
+	}
+
 	.active, .dot:hover {
 	  background-color: #717171;
+	}
+
+	.activePanel {
+  	background-color: #FF8BAC;
 	}
 
 	.subpanelButton {
@@ -414,8 +399,6 @@
 	.subBarText {
 		font-family: forzanLight;
 		font-size: 26px;
-		padding-top:10px;
-		padding-bottom: 6px;
 	}
 
 	.artMoreInfoText {
@@ -514,6 +497,75 @@
 		transition: all .2s ease-in-out;
 	}
 
+	.warning {
+		font-family: cocomat;
+		font-size: 60px;
+		color: #FF8BAC;
+		position: relative;
+		top: 28px;
+		display: inline-block;
+		line-height: 20px;
+	}
+
+	.popup {
+		/*height: 60vh;
+		width: 40vw;*/
+		width: fit-content;
+		background-color: white;
+		border: 1px solid black;
+		border-radius: 10px;
+		overflow: hidden;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 40;
+		box-shadow: 5px 5px 5px #494949;
+	}
+
+	.close {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		font-weight: bold;
+	  cursor: pointer;
+	  height: 50px;
+	  margin-right: 8px;
+	}
+
+	.popupBar {
+		background-color: #fee0e8;
+		width: 100%;
+		height: 50px;
+		border-bottom: 1px solid black;
+	}
+
+	.slideLeft {
+    animation: slideLeft .7s ease-in-out;
+	}
+
+	@keyframes slideLeft {
+
+		100% {
+			transform: translateX(-100%);
+		}
+	}
+
+	.slideRight {
+    animation: slideRight .7s ease-in-out;
+	}
+
+	@keyframes slideRight {
+
+		100% {
+			transform: translateX(100%);
+		}
+	}
+
+	.hidden {
+		display: none;
+	}
+
 	#marqueeContent {
 		width: 200px;
 		height: 100%;
@@ -523,7 +575,7 @@
 
 	@keyframes infScroll {
   0% { transform: translateY(0);}
-  100% { transform: translateY(-2640px);}
+  100% { transform: translateY(-2420px);}
 	}
 
 	#scrollDown {
@@ -562,7 +614,6 @@
 	#titlePanel {
 		padding-left: 30px;
 		padding-right: 30px;
-		margin-top: 51px;
 	}
 
 	#workImagesSP {
@@ -571,6 +622,11 @@
     align-items: center;
     border-right: .5px solid black;
     width: 50%;
+    height: 100%;
+	}
+
+	#workImagesSlide {
+/*		margin: 0 auto;*/
 	}
 
 	#workDescSP{
@@ -603,33 +659,29 @@
 	}
 
 	#cb4 {
-		background-color: #ffe5c4;
-	}
-
-	#cb4:hover {
-		background-color: #FFBA62;
-	}
-
-	#cb5 {
 		background-color: #ECFF9F;
 	}
 
-	#cb5:hover {
+	#cb4:hover {
 		background-color: #B7DB25;
 	}
 
-	#upArrowArea {
-		bottom: 66px;
-		right: 18px;
+	/*#cb5 {
+		background-color: #ffe5c4;
 	}
 
-	#downArrowArea {
-		bottom: 16px;
-		right: 18px;
+	#cb5:hover {
+		background-color: #FFBA62;
+	}
+*/
+	#workPanel1 {
+		position: absolute;
 	}
 
 	#workPanel2 {
-		display: none;
+/*		display: none;*/
+	position: absolute;
+	margin-top: 92vh;
 	}
 
 	#circles {
@@ -866,8 +918,7 @@
 
 	#leftContact {
 		width: 90%;
-/*		background-color: #ecfe9f;*/
-		background-image: linear-gradient(to bottom right, #fee0e8, #ffe5c4, #ecfe9f, #afedef, #9cbded, #9a8dc7);
+		background-color: #ecfe9f;
 		position: absolute;
 		left: 0px;
 		border-right: .5px solid black;
@@ -906,11 +957,9 @@
 		display: flex;
   	align-items: center;
   	justify-content: center;
-/*  	background-color: lightseagreen;*/
 	}
 
 	#leftMessageDiv {
-/*		background-color: lightseagreen; */
 		width: 80%; 
 		padding-top: 24px; 
 		padding-bottom: 24px;
@@ -918,7 +967,6 @@
 
 	#rightMessageDiv {
 		width: 80%;
-/*		background-color: blue;*/
 	}
 
 	#iconsDiv {
@@ -938,52 +986,99 @@
 		top: 7px;
 	}
 
+	#largePopup {
+		display: none;
+	}
+
+	#workDescWrapper {
+		width: 70%;
+		height: 100%;
+		overflow: visible;
+	}
+
+	#workImagesSlideBar {
+		height: 14%;
+		border-top: 2px solid black;
+	}
+
+	#rightSlideImg {
+		position: absolute;
+		right: -100%;
+	}
+
+	#leftSlideImg {
+		position: absolute;
+		right: 100%;
+	}
+
+	#dotDiv {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	#popupContent {
+		padding: 20px;
+	}
+
+
 </style>
 	</head>
 
 
 <body>
 
+	<!-- popup -->
+
+	<div class="popup" id="largePopup">
+		<span class="close" onclick="closePopup();">&times;</span>
+		<div class="popupBar">
+		</div>
+		<div id="popupContent">
+		</div>
+	</div>
+
+	<!-- end of popup -->
+
 	<ul class="topBar">
 	   <li class="dropdown">
-	  	<a class="dropbtn">Contact<label class="downArrow barArrows" style="font-size:15px">&#8964;</label></a>
+	  	<a class="dropbtn" href="#contact">Contact<label class="downArrow barArrows" style="font-size:15px">&#8964;</label></a>
 		<div class="dropdown-content">
-			<a>Direct Contact</a>
-			<a>Social Media</a>
-			<a>Other Links</a>
+			<a href="#contact">Direct Contact</a>
+			<a href="#contact">Social Media</a>
 		</div>
+	  </li>  
+	  <li class="dropdown">
+	    <a class="dropbtn" href="#music">Miscellaneous<label class="downArrow barArrows" style="font-size:15px">&#8964;</label></a>
+	    <div class="dropdown-content">
+	      <a href="#music">Piano Sheet Music & Tutorials</a>
+	    </div>
 	  </li>
 	  <li class="dropdown">
-	  	<a class="dropbtn">Skills<label class="downArrow barArrows" style="font-size:15px">&#8964;</label></a>
+	    <a class="dropbtn" href="#art">Art<label class="downArrow barArrows" style="font-size:15px">&#8964;</label></a>
+	    <div class="dropdown-content">
+	      <a href="#art" onclick="showDigital();">Digital Art</a>
+	      <a href="#art" onclick="showPhysical();">Physical Art</a>
+	    </div>
+	  </li>
+	  <li class="dropdown">
+	  	<a class="dropbtn" href="#skills">Skills<label class="downArrow barArrows" style="font-size:15px">&#8964;</label></a>
 	  	<div class="dropdown-content">
-			<a>View Resume</a>
+			<a onclick="window.open('https://wondernoodle09.github.io/portfolio/assets/documents/Resume.pdf');">View Resume</a>
 		</div>
-	  </li>	  
+	  </li>	
 	  <li class="dropdown">
-	    <a class="dropbtn">Miscellaneous<label class="downArrow barArrows" style="font-size:15px">&#8964;</label></a>
+	    <a class="dropbtn" href="#about">About<label class="downArrow barArrows" style="font-size:15px">&#8964;</label></a>
 	    <div class="dropdown-content">
-	      <a>Piano Sheet Music & Tutorials</a>
-	    </div>
-	  </li>
-	  <li class="dropdown">
-	    <a class="dropbtn">Art<label class="downArrow barArrows" style="font-size:15px">&#8964;</label></a>
-	    <div class="dropdown-content">
-	      <a>Digital Art</a>
-	    </div>
-	  </li>
-	  <li class="dropdown">
-	    <a class="dropbtn">About<label class="downArrow barArrows" style="font-size:15px">&#8964;</label></a>
-	    <div class="dropdown-content">
-	      <a>Summary</a>
+	      <a href="#about">Summary</a>
 	    </div>
 	  </li>
 	  <li class="dropdown"><a href="#work">Work<label class="downArrow barArrows" style="font-size:15px">&#8964;</label></a>
 	  	<div class="dropdown-content">
-	      <a>OCxD</a>
-	       <a>Animal Crossing Weather Bot</a>
-	      <a>Dog Gacha</a>
-	      <a>Dog Visual Novel Game</a>
-	      <a>Other Minor Works</a>
+	      <a onclick="document.getElementById('work').scrollIntoView(); $('#cb1').trigger('click');">OCxD</a>
+	       <a onclick="document.getElementById('work').scrollIntoView(); $('#cb2').trigger('click');">Animal Crossing Weather Bot</a>
+	      <a onclick="document.getElementById('work').scrollIntoView(); $('#cb3').trigger('click');">Dog Gacha</a>
+	      <a onclick="document.getElementById('work').scrollIntoView(); $('#cb4').trigger('click');">Cultural Abuse</a>
 	    </div>
 	  </li>
 	</ul>
@@ -991,143 +1086,83 @@
 	<div class="panel" id="titlePanel">
 		<img id="geometric" src="assets/images/geometricalPort.png" alt="geometrical design">
 		<div id="centerWords">
-			<h1 onclick="parent.location='index.html'" class="pointer">Annika Chavez</h1><hr class="subpanelHR"><br>
-			<h2>UI design, web design, app creation, and graphic design.</h2>
+			<h1 class="pointer">Annika Chavez</h1><hr class="subpanelHR"><br>
+			<h2>UX/UI design, web development, and graphic design.</h2>
 		</div>
 	<a id="scrollDown" class="downArrow" href="#work">&#8964;</a>
 	</div>
 
-	<div class="panel pagePanel" id="work">
+	<div class="panel" id="work">
 
 		<div id="circles">
-			<button id="cb1" class="circleButton" onclick="changeWork(this.id)">1</button>
-			<button id="cb2" class="circleButton" onclick="changeWork(this.id)">2</button>
-			<button id="cb3" class="circleButton" onclick="changeWork(this.id)">3</button>
-			<button id="cb4" class="circleButton" onclick="changeWork(this.id)">4</button>
-			<button id="cb5" class="circleButton" onclick="changeWork(this.id)">5</button>
+			<button id="cb1" class="circleButton" value="1" onclick="changeWork(this, this.value)">1</button>
+			<button id="cb2" class="circleButton" value="2" onclick="changeWork(this, this.value)">2</button>
+			<button id="cb3" class="circleButton" value="3" onclick="changeWork(this, this.value)">3</button>
+			<button id="cb4" class="circleButton" value="4" onclick="changeWork(this, this.value)">4</button>
+			<!-- <button id="cb5" class="circleButton" value="5" onclick="changeWork(this, this.value)">5</button> -->
 		</div>
 
+		<!-- left slideshow of project -->
+
 		<div class="subpanel" id="workImagesSP">
-			<div style="text-align:center">
-				<img id="workImage" src="assets/images/OCxDexampleOne.png" alt="Work Image"><br>
-			  <span class="dot"></span>
-			  <span class="dot"></span>
-			  <span class="dot"></span>
+
+			<div id="workImagesSlideWrapper" style="width: 86%; height: 100%;" class="centerHoriz">
+
+				<div id="workImagesSlide" style="text-align:center; box-shadow: 3px 6px black; border: 2px solid black; border-radius: 4px; overflow: hidden; height: 56%" class="centerVert">
+
+					<div id="workImagesSlidePics" style="width: 100%; height: 86%; z-index: -10;">
+					</div>
+
+					<div class="subpanel" id="workImagesSlideBar">
+						<button style="border: 0; box-shadow: 0 0 0; border-radius: 0px; border-right: 2px solid black; position: absolute; left: 0px; height: 100%; width: 10%" class="pointer" id="slideBarLeft" onclick="slideshowLeft();">
+							<span style="font-size: 30px;" class="centerAll">&#8592;</span>
+						</button>
+						<button style="border: 0; box-shadow: 0 0 0; border-radius: 0px; border-left: 2px solid black; position: absolute; right: 0px; height: 100%; width: 10%" class="pointer" id="slideBarRight" onclick="slideshowRight();">
+							<span style="font-size: 30px;" class="centerAll">&#8594;</span>
+						</button>
+						<div class="centerAll" id="dotDiv">
+						</div>
+					</div>
+
+				</div>
+
 			</div>
+
 		</div>
 
 		<div class="subpanel" id="workDescSP">
 
-			<div class="subpanelText" id="workPanel1">
-				<h1 id="workDescTitle"></h1>
-				<hr class="subpanelHR"><br>
-				<p id="workDescDesc"></p>
-				<button class="subpanelButton">Link to web app <i class="fa fa-external-link"></i></button>
+			<div id="workDescWrapper" class="centerHoriz">
+
+				<div class="subpanelText centerVert" id="workPanel1">
+					<h1 id="workDescTitle"></h1>
+					<hr class="subpanelHR"><br>
+					<p id="workDescDesc"></p>
+				</div>
+
 			</div>
-
-
-			<div class="subpanelText" id="workPanel2">
-				<h1 id="workDescTitle2"></h1>
-				<hr class="subpanelHR"><br>
-				<p id="workDescDesc2"></p>
-			</div>
-
-			<div id="upArrowArea" class="arrowArea">
-				<a class="prev">Prev<label class="arrow">&#8593;</label></a>
-			</div>
-
-			<div id="downArrowArea" class="arrowArea">
-  			<a class="next">Next<label class="arrow">&#8595;</label></a>
-  			</div>
-
 		</div>
 
 	</div>
 
-	<div class="panel pagePanel" id="about">
+	<div class="panel" id="about">
 
 		<div class="subpanel" id="aboutDescSP">
-			<div class="subpanelText">
-				<h1>About</h1>
-				<hr class="subpanelHR" style="width:700px;"><br>
+			<div class="subpanelText centerHoriz" style="width: 80%;">
+				<h1>About Annika</h1>
+				<hr class="subpanelHR" style="width:100%;"><br>
 				<p id="aboutDesc"> My name is Annika Chavez. I love to create ideas and conceptualize as well as play a part in the implementation and development. I have always been interested in digital art and graphic design as a kid. In high school, I began to teach myself programming in order to further utilize my skills. My current abilities range solely from art and design, to implementing the art into front end programming, and even working on the mechanics of programs and apps themselves through languages like Javascript.<br><br>I'm currently a student at Diablo Valley College pursuing a degree in Cognitive Science in hopes of going into the UX/UI design field. When I'm not designing or programming, I love to draw, create music, play piano or guitar, sing, sew, and play video games. </p>
 			</div>
 		</div>
 
 		<div class="subpanel" id="aboutPicSP">
 			<img id="aboutPicBackground" class="center" src="assets/images/pictureBackground.png">
-			<img id="aboutPic" class="center" src="assets/images/professionalHeadShot.jpg" alt="picture of Annika">
+			<img id="aboutPic" class="center" src="assets/images/professionalHeadShot.png" alt="picture of Annika">
 		</div>
 
 	</div>
 
-	<div class="panel pagePanel" id="art">
-
-		<div class="subBar centerSubBar">
-			<h1>Art</h1>
-			<hr class="subpanelHR centerHoriz" style="margin-top: -2px;">
-			<button class="subpanelButton" id="instagramButton1"><i class="fa fa-instagram" id="firstInstaLink"></i>Art Instagram <i class="fa fa-external-link"></i></button>
-		</div>
-
-		<div id="artSelectionBar" style="height: 8%;">
-
-			<div class="subpanel" id="digitalSP" onclick="showDigital();">
-				<h2 class="subBarText">Digital</h2>
-			</div>
-
-			<div class="subpanel" id="physicalSP" onclick="showPhysical();">
-				<h2 class="subBarText">Physical</h2>
-			</div>
-		</div>
-
-		<div class="subpanel" id="artsContainer">
-			<div id="instagramContainer">
-			</div>
-		</div>
-
-		<div id="artDescBar" class="subpanel">
-
-			<div class="subpanel" id="artTitleSP">
-				<h1 id="artName"></h1>
-			</div>
-			
-			<div class="subpanel" id="artOtherInfoSP">
-				<div style="width:100%; height: 126px; position: absolute;" class="centerVert">
-					<p class="artMoreInfoText">Date Published:</p><label id="artDate" style="font-family: cocomat; font-size: 18px;"></label><br class="shrinkBR">
-					<p class="artMoreInfoText">Medium Used:</p><label id="artMedium" style="font-family: cocomat; font-size: 18px;"></label><br class="shrinkBR">
-					<p class="artMoreInfoText">Purpose:</p><label id="artPurpose" style="font-family: cocomat; font-size: 18px;"></label><br class="shrinkBR">
-					<p class="artMoreInfoText">Character(s):</p><label id="artCharacter" style="font-family: cocomat; font-size: 18px;"></label><br class="shrinkBR">
-					<p class="artMoreInfoText">Origin of Character(s):</p><label id="artOrigin" style="font-family: cocomat; font-size: 18px;"></label>
-				</div>
-			</div>
-		</div>
-
-	</div>
-
-	<div class="panel pagePanel" id="music">
-
-		<div class="subpanel" id="leftPianoSP">
-
-			<div id="pianoTitleBox">
-				<h1 id="pianoMusic" class="centerVert">Piano Music</h1>
-				<hr style="color: white; position: relative; top: 75px">
-			</div>
-			<div style="width:400px; height: 400px; position: absolute; top: 0px; left: 0px; background-color: black"></div>
-
-			<div id="musicDescDiv">
-				<p id="musicDesc">I create piano music and publish the music sheets and video tutorials for them. Hover over a music piece to listen to it, and click to view more info + links.</p>
-			</div>
-		</div>
-
-		<img id="piano" src="assets/images/piano.png">
-
-		<div class="subpanel" id="musicContainer">
-			<div id="musicScrollBox" class="centerHoriz">
-			</div>
-		</div>
-	</div>
-
-	<div class="panel pagePanel" id="skills">
+	<div class="panel" id="skills">
 
 		<div class="subpanel" id="leftSkillsSP">
 			<div id="marquee" class="centerHoriz">
@@ -1143,7 +1178,7 @@
 					<h1 style="display: inline-block;">Skills</h1>
 					<hr class="subpanelHR" style="position: absolute; bottom: 10px; width: 700px">
 				</div>
-				<button class="centerVert" style="display: inline-block; position: absolute; right: 20px" onclick="window.open('https://wondernoodle09.github.io/portfolio/assets/documents/Resume.pdf');">view resume</button>
+				<button class="centerVert" style="display: inline-block; position: absolute; right: 20px" onclick="window.open('https://wondernoodle09.github.io/portfolio/assets/documents/Resume.pdf');">view resume <i class="fa fa-external-link"></i></button>
 			</div>
 
 			<div class="subpanel" style="height: 85%;">
@@ -1167,11 +1202,77 @@
 
 	</div>
 
-	<div class="panel pagePanel" id="contact" style="margin-bottom: 30px;">
+	<div class="panel" id="art">
+
+		<div class="subBar centerSubBar">
+			<h1>Art Showcase</h1>
+			<hr class="subpanelHR centerHoriz">
+			<button onclick="window.open('https://www.instagram.com/wondernoodleart')" class="subpanelButton" id="instagramButton1"><i class="fa fa-instagram" id="firstInstaLink"></i>Art Instagram <i class="fa fa-external-link"></i></button>
+		</div>
+
+		<div id="artSelectionBar" style="height: 8%;">
+
+			<div class="subpanel" id="digitalSP" onclick="showDigital();">
+				<h2 class="subBarText centerAll">Digital</h2>
+			</div>
+
+			<div class="subpanel" id="physicalSP" onclick="showPhysical();">
+				<h2 class="subBarText centerAll">Physical</h2>
+			</div>
+		</div>
+
+		<div class="subpanel" id="artsContainer">
+			<div id="instagramContainer">
+			</div>
+		</div>
+
+		<div id="artDescBar" class="subpanel">
+
+			<div class="subpanel" id="artTitleSP">
+				<h1 id="artName"></h1>
+			</div>
+			
+			<div class="subpanel" id="artOtherInfoSP">
+				<div style="width:100%; height: 126px; position: absolute;" class="centerVert">
+					<p class="artMoreInfoText">Date Published:</p><label id="artDate" style="font-family: cocomat; font-size: 18px;"></label><br class="shrinkBR">
+					<p class="artMoreInfoText">Medium Used:</p><label id="artMedium" style="font-family: cocomat; font-size: 18px;"></label><br class="shrinkBR">
+					<p class="artMoreInfoText">Purpose:</p><label id="artPurpose" style="font-family: cocomat; font-size: 18px;"></label><br class="shrinkBR">
+					<p class="artMoreInfoText">Character(s):</p><label id="artCharacter" style="font-family: cocomat; font-size: 18px;"></label><br class="shrinkBR">
+					<p class="artMoreInfoText">Origin:</p><label id="artOrigin" style="font-family: cocomat; font-size: 18px;"></label>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="panel" id="music">
+
+		<div class="subpanel" id="leftPianoSP">
+
+			<div id="pianoTitleBox">
+				<h1 id="pianoMusic" class="centerVert">Piano Music</h1>
+				<hr style="color: white; position: relative; top: 75px">
+			</div>
+			<div style="width:400px; height: 400px; position: absolute; top: 0px; left: 0px; background-color: black"></div>
+
+			<div id="musicDescDiv">
+				<p id="musicDesc">I create piano music and publish the music sheets and video tutorials for them. Hover over a music piece to listen to it, and click to view more info + links.</p>
+			</div>
+		</div>
+
+		<img id="piano" src="assets/images/piano.png">
+
+		<div class="subpanel" id="musicContainer">
+			<div id="musicScrollBox" class="centerHoriz">
+			</div>
+		</div>
+	</div>
+
+	<div class="panel" id="contact" style="margin-bottom: 30px;">
 
 		<div class="subBar centerSubBar">
 			<h1>Contact</h1>
-			<hr class="subpanelHR centerHoriz" style="margin-top: -2px;">
+			<hr class="subpanelHR centerHoriz">
 		</div>
 
 		<div class="subpanel" id="leftContact">
@@ -1183,25 +1284,25 @@
 						<h1 class="noSpacing" style="font-size: 46px">Get in touch</h1><hr class="subpanelHR">
 
 					  <label for="firstName">First Name:</label>
-					  <input style="margin-top: 24px;" name="firstName" type="text" required><span>*</span><br>
+					  <input style="margin-top: 24px;" name="firstName" type="text" required><span class="warning">*</span><br>
 
 					  <label for="lastName">Last Name:</label>
 					  <input name="lastName" type="text"><br>
 
 					  <label for="email">Email:</label>
-					  <input name="email" type="email" required><span>*</span><br>
+					  <input name="email" type="email" required><span class="warning">*</span><br>
 
 					  <label for="phone">Phone number:</label>
 					  <input style="margin-bottom: 0px" name="phone" type="tel"><br>
 
-					  <p style="font-size: 18px; margin-bottom: -42px; color: #FF8BAC;" class="noSpacing"><span>*</span>required</p>
+					  <p style="font-size: 18px; margin-bottom: -42px; color: #FF8BAC;" class="noSpacing"><span class="warning">*</span>required</p>
 					</div>
 				</div>
 
 				<div class="subpanel" id="rightMessage">
 					<div id="rightMessageDiv">
 					  <label for="message">Message:</label><br>
-					  <textarea name="message" required></textarea><span style="position: absolute; top: 330px">*</span><br>
+					  <textarea name="message" required></textarea><span style="position: absolute; top: 330px" class="warning">*</span><br>
 					</div>
 					<button style="margin-top: 12px; position: absolute; bottom: 60px; right: 96px;" type="submit">Send Message</button>
 				</div>
@@ -1211,7 +1312,7 @@
 
 		<div class="subpanel" id="rightContact">
 			<div id="iconsDiv">
-				<div class="iconsDivDiv" onclick="window.open('https://www.linkedin.com/in/annika-chavez-a10742214/')"><i class="fa fa-linkedin-square contactIcons"></i></div>
+				<!-- <div class="iconsDivDiv" onclick="window.open('https://www.linkedin.com/in/annika-chavez-a10742214/')"><i class="fa fa-linkedin-square contactIcons"></i></div> -->
 				<div class="iconsDivDiv" onclick="window.open('https://www.instagram.com/wondernoodleart/')"><i class="fa fa-instagram contactIcons"></i></div>
 				<div class="iconsDivDiv" onclick="window.open('https://www.youtube.com/channel/UC4GWkLrABlQnaKkWBhbXTQw')"><i class="fa fa-youtube-play contactIcons"></i></div>
 				<div class="iconsDivDiv" onclick="window.open('https://musescore.com/user/32588974?share=copy_link')" style="margin-bottom: 0;"><img src="assets/images/musescoreIcon.png" style="width: 72px;"></div>
