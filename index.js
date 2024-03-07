@@ -519,7 +519,7 @@ function hideInfo() {
 // skills
 
 const talents = ["Self Teaching", "Prototype Design", "Creative Writing", "Leadership", "Music Creation", "Public Speaking & Presentation"];
-const programming = ["Javascript", "HTML", "CSS", "Jquery", "React", "Python", "Github/Github Pages"];
+const programming = ["Javascript", "HTML", "CSS", "Jquery", "React", "R", "Python", "Github/Github Pages"];
 const design = ["Figma", "Adobe Photoshop", "Adobe Illustrator", "Wix", "Digital Drawing", "Graphic Design"];
 
 var talentsDiv = document.getElementById("talentsColumn");
